@@ -14,3 +14,6 @@ input_method = HiddenInputField
 [project]
 title = tenjin
 
+[library]
+include_dirs = tenjin
+
