@@ -1,0 +1,12 @@
+name: "Tenjin"
+
+platforms:
+    arm64-ios:
+        context:
+            frameworks: ["iAd", "AdSupport", "StoreKit"]
+            linkFlags:  ["-ObjC"]
+
+    armv7-ios:
+        context:
+            frameworks: ["iAd", "AdSupport", "StoreKit"]
+            linkFlags:  ["-ObjC"]
