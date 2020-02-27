@@ -1,4 +1,4 @@
-# TapticEngine
+# Tenjin SDK
 
 This is a native extension for [Defold engine](http://www.defold.com) which allows to use [Tenjin SDK](https://docs.tenjin.com/en/).
 
