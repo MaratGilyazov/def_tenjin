@@ -6,7 +6,7 @@
 #include <dmsdk/sdk.h>
 
 
-#if defined(DM_PLATFORM_IOS)
+#if defined(DM_PLATFORM_IOS) || defined(DM_PLATFORM_ANDROID)
 #include "tenjin.h"
 
 static int init(lua_State* L) {
