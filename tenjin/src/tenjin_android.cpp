@@ -64,10 +64,34 @@ void Tenjin_Init(const char*api_key, bool gdpr_consent)
 
 void Tenjin_CustomEvent(const char*event_name)
 {
+    AttachScope attachscope;
+    JNIEnv* env = attachscope.m_Env;
+
+    jclass cls = GetClass(env, "com.anvil.tenjin.Tenjin");
+    jmethodID method = env->GetStaticMethodID(cls, "CustomEvent", "(Ljava/lang/String;)V");
+    
+    jstring eventName = env->NewStringUTF(event_name);
+
+    env->CallStaticObjectMethod(cls, method, eventName);
+
+    env->DeleteLocalRef(eventName);
 }
 
 void Tenjin_CustomEventWithValue(const char*event_name, const char*event_value)
 {
+    AttachScope attachscope;
+    JNIEnv* env = attachscope.m_Env;
+
+    jclass cls = GetClass(env, "com.anvil.tenjin.Tenjin");
+    jmethodID method = env->GetStaticMethodID(cls, "CustomEventWithValue", "(Ljava/lang/String;Ljava/lang/String;)V");
+
+    jstring eventName = env->NewStringUTF(event_name);
+    jstring eventValue = env->NewStringUTF(event_value);
+
+    env->CallStaticObjectMethod(cls, method, eventName, eventValue);
+
+    env->DeleteLocalRef(eventName);
+    env->DeleteLocalRef(eventValue);
 }
 
 #endif
