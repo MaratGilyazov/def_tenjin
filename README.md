@@ -2,10 +2,11 @@
 
 This is a native extension for [Defold engine](http://www.defold.com) which allows to use [Tenjin SDK](https://docs.tenjin.com/en/).
 
-ATTENTION! Currently only iOS SDK supported! No Android support in current implementation!
-ATTENTION-2! Even for iOS not every API methods are fully supported, only initialization and sending custom events; see LUA Api section below for the list of supported methods.
+ATTENTION! Not every API methods are fully supported, only initialization and sending custom events, no support for purchases events; see LUA Api section below for the list of supported methods.
 
-Used Tenjin iOS SDK v1.9.1: https://github.com/tenjin/tenjin-ios-sdk
+ATTENTION-2! On Android "Init()" method is called by demand, from your lua code, when documentation advices to do this in Android "OnResume" event. So, probably, sessions tracking is not fully correct.
+
+Used Tenjin iOS SDK v1.9.1: https://github.com/tenjin/tenjin-ios-sdk and Android SDK v1.9.3: https://github.com/tenjin/tenjin-android-sdk
 
 ## Installation
 
@@ -36,7 +37,7 @@ Send custom event with event_name and event_value.
 IMPORTANT! event_value should be send as a string BUT it should contain the integer value!
 
 ## SDK support level
-Some APIs are not supported in this version of extention, see the full list of native SDK methods in the [Tenjin iOS SDK repo](https://github.com/tenjin/tenjin-ios-sdk). 
+Some APIs are not supported in this version of extention, see the full list of native SDK methods in the [Tenjin iOS SDK repo](https://github.com/tenjin/tenjin-ios-sdk) and [Tenjin Andoir SDK repo](ttps://github.com/tenjin/tenjin-android-sdk) 
 
 ## Testing
 See an official documentation describing how to test your integration: https://docs.tenjin.com/en/send-events/#check
