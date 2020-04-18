@@ -94,4 +94,21 @@ void Tenjin_CustomEventWithValue(const char*event_name, const char*event_value)
     env->DeleteLocalRef(eventValue);
 }
 
+void Tenjin_PurchaseEvent(const char* product_id, const char* currency_code, const int quantity, const double price)
+{
+    AttachScope attachscope;
+    JNIEnv* env = attachscope.m_Env;
+
+    jclass cls = GetClass(env, "com.anvil.tenjin.Tenjin");
+    jmethodID method = env->GetStaticMethodID(cls, "PurchaseEvent", "(Ljava/lang/String;Ljava/lang/String;ID)V");
+
+    jstring productId = env->NewStringUTF(product_id);
+    jstring currencyCode = env->NewStringUTF(currency_code);
+
+    env->CallStaticObjectMethod(cls, method, productId, currencyCode, quantity, price);
+
+    env->DeleteLocalRef(productId);
+    env->DeleteLocalRef(currencyCode);
+}
+
 #endif

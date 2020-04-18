@@ -32,11 +32,23 @@ static int custom_event_with_value(lua_State* L) {
     return 0;
 }
 
+static int purchase_event(lua_State* L) {
+    DM_LUA_STACK_CHECK(L, 0);
+    const char* product_id = luaL_checkstring(L, 1);
+    const char* currency_code = luaL_checkstring(L, 2);
+    const int quantity = luaL_checkinteger(L, 3);
+    const lua_Number price = luaL_checknumber(L, 4);
+    
+    Tenjin_PurchaseEvent(product_id, currency_code, quantity, price);
+    return 0;
+}
+
 static const luaL_reg Module_methods[] =
 {
     {"init", init},
     {"custom_event", custom_event},
     {"custom_event_with_value", custom_event_with_value},
+    {"purchase_event", purchase_event},
     {0, 0}
 };
 

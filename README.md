@@ -2,7 +2,7 @@
 
 This is a native extension for [Defold engine](http://www.defold.com) which allows to use [Tenjin SDK](https://docs.tenjin.com/en/).
 
-ATTENTION! Not every API methods are fully supported, only initialization and sending custom events, no support for purchases events; see LUA Api section below for the list of supported methods.
+ATTENTION! Not every API methods are fully supported, only initialization and sending custom events; see LUA Api section below for the list of supported methods.
 
 ATTENTION-2! On Android "Init()" method is called by demand, from your lua code, when documentation advices to do this in Android "OnResume" event. So, probably, sessions tracking is not fully correct.
 
@@ -21,6 +21,7 @@ if tenjin then
   tenjin.init("YOUR_API_KEY", true)
   tenjin.custom_event("custom_event")
   tenjin.custom_event_with_value("custom_event", "10")
+  tenjin.purchase_event("com.company.inapp", "USD", 1, 0.99)
 
 end
 ```
@@ -35,6 +36,8 @@ Send custom event with event_name
 #### tenjin.custom_event_with_value(string event_name, string event_value)
 Send custom event with event_name and event_value. 
 IMPORTANT! event_value should be send as a string BUT it should contain the integer value!
+#### tenjin.purchase_event(string product_id, string currency_code, int quantity, double price)
+Send purchase event. product_id -> the name or ID of your product; currency_code -> the currency of your unit price; quantity -> the number of products that are counted for this purchase event; price -> the price of each product
 
 ## SDK support level
 Some APIs are not supported in this version of extention, see the full list of native SDK methods in the [Tenjin iOS SDK repo](https://github.com/tenjin/tenjin-ios-sdk) and [Tenjin Andoir SDK repo](ttps://github.com/tenjin/tenjin-android-sdk) 

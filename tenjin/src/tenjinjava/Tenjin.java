@@ -29,4 +29,8 @@ class Tenjin {
         tenjinInstance.eventWithNameAndValue(eventName, eventValue);
     }
 
+    public static final void PurchaseEvent(String productId, String currencyCode, int quantity, double unitPrice) {
+        tenjinInstance.transaction(productId, currencyCode, quantity, unitPrice);
+    }
+
 }
